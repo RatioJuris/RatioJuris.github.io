@@ -313,3 +313,92 @@
         a: Remove it from the blocked-sites list on the Options page, or turn site blocking off.
       - q: How do I reset everything?
         a: Open the Options page and use **Reset Statistics** or **Restore Default Settings**.
+
+
+- slug: refindia
+  name: RefIndia
+  kind: Web app
+  platform: Any modern browser
+  design: Navy and saffron, built for Indian legal and academic writing
+  tagline: Citations for Indian law and academia.
+  summary: >-
+    A free citation generator for Indian cases, statutes, books, articles and
+    theses in ILI, OSCOLA, APA, Harvard, MLA, IEEE and Chicago. Runs entirely in
+    your browser.
+  icon: https://ratiojuris.github.io/RefIndia/icon.svg
+  accent: "#ff9933"
+  version: 1.0.0
+  homepage: https://ratiojuris.github.io/RefIndia/
+  repo: RatioJuris/RefIndia
+  license: MIT
+  developers: [ratiojuris]
+  publishers: [ratiojuris]
+  updated: "2026-11-09"
+  stores: []
+
+  privacy:
+    no: [account, server, cookies, analytics, advertising]
+    highlights:
+      - Citations are formatted in your browser. What you type is never sent to us.
+      - DOI and ISBN lookups go directly from your browser to doi.org, Open Library or Google Books.
+      - RefIndia stores nothing. Closing the page discards everything you entered.
+    data:
+      - what: Details you type into the Generator or Converter
+        why: To format your citation
+        leaves: "No. Processed in your browser and discarded when you close the page."
+      - what: A DOI or ISBN you look up
+        why: To fetch the publication's details
+        leaves: "Yes, only to the lookup service you use (see below)."
+    permissions:
+      - name: Clipboard (write)
+        why: Only when you click **Copy**, to place the citation on your clipboard.
+    network:
+      - party: GitHub Pages (`ratiojuris.github.io`), operated by GitHub, Inc.
+        when: When you open RefIndia, to load the app.
+        receives: Your IP address and browser information, as with any web request.
+        policy: https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement
+      - party: doi.org and the registration agency for the DOI (for example Crossref or DataCite)
+        when: Only when you look up a DOI.
+        receives: The DOI, your IP address and browser information.
+        policy: https://www.doi.org/privacy-policy
+      - party: Internet Archive (`openlibrary.org`)
+        when: Only when you look up an ISBN.
+        receives: The ISBN, your IP address and browser information.
+        policy: https://archive.org/about/terms
+      - party: Google (`googleapis.com`)
+        when: Only when you look up an ISBN that Open Library does not have.
+        receives: The ISBN, your IP address and browser information.
+        policy: https://policies.google.com/privacy
+    storage:
+      - Nothing. RefIndia uses no cookies, local storage or other browser storage.
+    retention: RefIndia keeps no data. Anything you enter is lost when you close or reload the page.
+
+  terms:
+    clauses:
+      - title: Check every citation
+        body: >-
+          RefIndia follows the published citation styles closely, but universities,
+          journals and courts often have their own rules, and looked-up metadata can be
+          incomplete or wrong. You are responsible for checking every citation before
+          you submit or file it.
+      - title: Not legal advice
+        body: RefIndia formats references. It does not give legal advice.
+      - title: Citation styles
+        body: >-
+          Citation styles are the work of the Citation Style Language project and are
+          used under the CC BY-SA 3.0 licence. RefIndia is not affiliated with the
+          Indian Law Institute, the University of Oxford, the American Psychological
+          Association, the Modern Language Association, IEEE or the University of
+          Chicago Press.
+
+  support:
+    guide: https://ratiojuris.github.io/RefIndia/#/help
+    faq:
+      - q: Does RefIndia store what I type?
+        a: No. Everything is processed in your browser, and nothing is saved.
+      - q: My DOI or ISBN was not found.
+        a: Not every publication is listed in doi.org, Open Library or Google Books. Enter the details by hand in the Generator.
+      - q: Can I convert a citation copied from a document?
+        a: Not reliably, so RefIndia does not try. Use the DOI or ISBN, or paste BibTeX or RIS exported from your reference manager.
+      - q: Is the ILI style official?
+        a: RefIndia uses the Citation Style Language style for the Journal of the Indian Law Institute, and its own formatter for Indian cases and statutes. Always check against the rules you have been given.
