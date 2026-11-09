@@ -27,7 +27,7 @@ layout: doc
 <div class="prose">
 
 {%- if p %}
-<p>This Privacy Policy explains how <strong>{{ p.name }}</strong>{% if p.full_name %} ({{ p.full_name }}){% endif %}, a {{ p.kind | downcase }} for {{ p.platform }}, handles information. {{ p.name }} is developed by {% include entity-names.html keys=p.developers %} and published by {% include entity-names.html keys=p.publishers %} (“we”, “us”).</p>
+<p>This Privacy Policy explains how <strong>{{ p.name }}</strong>{% if p.full_name %} ({{ p.full_name }}){% endif %} on {{ p.platform }} handles information. {{ p.name }} is developed by {% include entity-names.html keys=p.developers %} and published by {% include entity-names.html keys=p.publishers %} (“we”, “us”).</p>
 {%- else %}
 <p>This Privacy Policy explains how software published by <strong>RatioJuris</strong> and its partners, and this website, handle information (“we”, “us”). Every product also has its own policy, which sets out exactly what that product accesses, stores and sends. Product policies are listed <a href="#products">below</a>.</p>
 {%- endif %}

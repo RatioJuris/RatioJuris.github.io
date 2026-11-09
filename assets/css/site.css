@@ -371,6 +371,7 @@ code { font-family: var(--mono); font-size: 0.88em; background: var(--line-soft)
   border-top: 1px solid var(--line-soft); font-size: 1.45rem; scroll-margin-top: 90px;
 }
 .prose h2::before { content: "§ " counter(section) "  "; color: var(--gold); font-size: 0.85em; }
+.prose--plain h2::before { content: none; }
 .prose h3 { margin-top: 1.5rem; font-size: 1.12rem; scroll-margin-top: 90px; }
 .prose li { margin-bottom: 0.4rem; }
 .link-list { padding-left: 1.2rem; }
