@@ -1,0 +1,37 @@
+# Showcased work that does not need its own privacy policy or terms
+# (doctrines, research, tools without a published release).
+
+- name: The Doctrine of Judicial Justice and Absolute Justice
+  category: Doctrine
+  summary: Defines absolute justice and its relationship with judicial justice.
+  repo: RatioJuris/The-Doctrine-of-Judicial-Justice-and-Absolute-Justice
+
+- name: OSJ Doctrine
+  category: Doctrine
+  summary: >-
+    A statute-form manifesto arguing for citation-backed proof-of-execution
+    over credentials and paid certificates.
+  repo: RatioJuris/osj-doctrine
+
+- name: PDF DSC-TSA Bulk Signer
+  category: Legal technology
+  language: Java
+  summary: Stamps a visible signature on selected pages and digitally secures the whole PDF in one step.
+  repo: RatioJuris/BulkFieldSignerGUI
+
+- name: Bhartiya Sakshya Adhiniyam Hash
+  category: Legal technology
+  language: HTML
+  summary: Generates and compares SHA-256, SHA-1 and MD5 evidence hashes, with signed PDF reports.
+  repo: RatioJuris/Bhartiya-Sakshya-Adhiniyam-Hash-Online
+
+- name: FS Legal-Size Scanner
+  category: Legal technology
+  language: Java
+  summary: Lets ordinary A4 flatbed scanners produce Foolscap and legal-size scans.
+  repo: RatioJuris/FS-Legal-Size-Scanner
+
+- name: Security Research
+  category: Security
+  summary: Investigations into web security, digital forensics and infrastructure vulnerabilities.
+  repo: RatioJuris/security-research

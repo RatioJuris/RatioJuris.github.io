@@ -1,0 +1,12 @@
+# People and organisations that develop or publish products.
+# Products refer to these by key in their "developers" and "publishers" lists.
+
+ratiojuris:
+  name: RatioJuris
+  description: Independent, pseudonymous developer
+  url: https://github.com/RatioJuris
+
+prajnabytes:
+  name: PrajnaBytes International Private Limited
+  description: Company incorporated in India
+  url:

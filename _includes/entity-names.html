@@ -1,0 +1,7 @@
+{%- capture names -%}
+{%- for key in include.keys -%}
+{%- assign e = site.data.entities[key] -%}
+{%- unless forloop.first -%}{%- if forloop.last %} and {% else %}, {% endif -%}{%- endunless -%}
+<strong>{{ e.name | default: key }}</strong>
+{%- endfor -%}
+{%- endcapture -%}{{ names | strip }}

@@ -1,0 +1,88 @@
+---
+layout: doc
+---
+{%- comment -%}
+  MASTER TERMS OF USE
+  Used for /legal/terms/ (no product) and /legal/<slug>/terms/ (one product).
+  Product-specific clauses come from _data/products.yml.
+{%- endcomment -%}
+{%- assign p = page.product -%}
+{%- if p %}{% assign subject = p.name %}{% else %}{% assign subject = "the Software" %}{% endif -%}
+
+<div class="prose">
+
+<h2 id="agreement">Agreement</h2>
+{%- if p %}
+<p>These Terms of Use govern your use of <strong>{{ p.name }}</strong>{% if p.full_name %} ({{ p.full_name }}){% endif %}, a {{ p.kind | downcase }} for {{ p.platform }} (the “Software”), including its documentation and updates. By installing or using the Software, you agree to these Terms. If you do not agree, do not install or use it.</p>
+{%- else %}
+<p>These Terms of Use govern your use of software published by RatioJuris and its partners (the “Software”) and of this website. Each product's own terms add the clauses specific to that product and form part of these Terms. If you do not agree, do not install or use the Software.</p>
+<ul class="link-list">
+  {%- for prod in site.data.products %}
+  <li><a href="{{ '/legal/' | append: prod.slug | append: '/terms/' | relative_url }}">{{ prod.name }} Terms of Use</a> <span class="muted">· {{ prod.kind }}</span></li>
+  {%- endfor %}
+</ul>
+{%- endif %}
+
+<h2 id="provider">Who provides the Software</h2>
+{%- if p %}
+<p>{{ p.name }} is developed by {% include entity-names.html keys=p.developers %} and published by {% include entity-names.html keys=p.publishers %} (“we”, “us”).</p>
+{%- else %}
+<p>Each product's terms name its developer and publisher (“we”, “us”).</p>
+{%- endif %}
+
+<h2 id="licence">Licence and source code</h2>
+{%- if p and p.license %}
+<p>The source code of {{ p.name }} is available on <a href="https://github.com/{{ p.repo }}" rel="noopener">GitHub</a> under the <strong>{{ p.license }}</strong> licence. Nothing in these Terms limits the rights that licence gives you. If these Terms and the licence conflict, the licence prevails for the source code and anything you build from it.</p>
+{%- elsif p %}
+<p>The source code of {{ p.name }} is published on <a href="https://github.com/{{ p.repo }}" rel="noopener">GitHub</a> for review. Unless the repository states otherwise, it is not distributed under an open-source licence, and all rights are reserved. You may install and use the Software for your own purposes.</p>
+{%- else %}
+<p>Where a product is open source, its licence is named in its own terms, and nothing in these Terms limits the rights that licence gives you. If these Terms and an open-source licence conflict, the licence prevails for the source code.</p>
+{%- endif %}
+<p>The Software is provided free of charge unless its store listing says otherwise.</p>
+
+<h2 id="use">Using the Software</h2>
+<ul>
+  <li>Use the Software lawfully, and in line with the rules of the platform and websites you use it with.</li>
+  <li>Do not present modified versions as official releases, or use our names or logos in a way that suggests we endorse them.</li>
+  <li>You are responsible for your own data, devices and backups.</li>
+</ul>
+
+{%- if p and p.terms.clauses.size > 0 %}
+<h2 id="product-terms">Terms specific to {{ p.name }}</h2>
+{%- for c in p.terms.clauses %}
+<h3 id="{{ c.title | slugify }}">{{ c.title }}</h3>
+{{ c.body | markdownify }}
+{%- endfor %}
+{%- endif %}
+
+<h2 id="third-parties">Stores, platforms and third parties</h2>
+<p>If you get the Software from an app store, such as Google Play, the Chrome Web Store, Microsoft Edge Add-ons or Microsoft AppSource, that store's terms also apply to your download. The Software may work with websites, services and platforms run by others. We do not control them, and their own terms and policies apply.</p>
+
+<h2 id="privacy">Privacy</h2>
+<p>How {{ subject }} handles information is explained in the {% if p %}<a href="{{ '/legal/' | append: p.slug | append: '/privacy/' | relative_url }}">{{ p.name }} Privacy Policy</a>{% else %}<a href="{{ '/legal/privacy/' | relative_url }}">Privacy Policy</a>{% endif %}.</p>
+
+<h2 id="updates">Updates and availability</h2>
+<p>We may update, change, suspend or stop developing {{ subject }} or any feature at any time. Updates to operating systems, browsers, websites or other software may affect how it works.</p>
+
+<h2 id="warranty">No warranty</h2>
+<p>The Software is provided <strong>“as is”</strong> and <strong>“as available”</strong>, without warranties of any kind, to the fullest extent the law allows. We do not promise that it will be error-free, uninterrupted, secure, or suitable for any particular purpose.</p>
+
+<h2 id="liability">Limitation of liability</h2>
+<p>To the fullest extent the law allows, we are not liable for any indirect, incidental, special, consequential or punitive damages, or for loss of data, profits, business or goodwill, arising from your use of, or inability to use, the Software. Nothing in these Terms excludes or limits any liability that cannot lawfully be excluded or limited, or any rights you have as a consumer under the law of your country.</p>
+
+<h2 id="termination">Ending these Terms</h2>
+<p>You can stop using the Software at any time by uninstalling it. These Terms end when you do. The sections on warranty, liability and governing law continue to apply after that.</p>
+
+<h2 id="changes">Changes to these Terms</h2>
+<p>We may update these Terms. The new version will be published on this page with a new “Last updated” date, and every past version is preserved in the <a href="https://github.com/{{ site.github_user }}/{{ site.github_user }}.github.io/commits/main" rel="noopener">public revision history</a>. If you keep using the Software after a change, the updated Terms apply.</p>
+
+<h2 id="law">Governing law</h2>
+<p>These Terms are governed by the laws of {{ site.governing_law }}. Disputes are subject to the jurisdiction of the competent courts in {{ site.governing_law }}. This does not take away the protection of any mandatory consumer law of the country where you live.</p>
+
+<h2 id="general">General</h2>
+<p>If any part of these Terms is found unenforceable, the rest remains in effect. These Terms, the Privacy Policy and any applicable open-source licence are the entire agreement between you and us about the Software.</p>
+
+<h2 id="contact">Contact</h2>
+<p>Questions about these Terms: <a href="mailto:{{ site.contact_email }}?subject={{ subject | append: ' terms' | uri_escape }}">{{ site.contact_email }}</a>.</p>
+
+</div>

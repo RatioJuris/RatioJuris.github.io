@@ -1,0 +1,315 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  PRODUCT REGISTER
+#
+#  Every product listed here automatically gets, in the same design:
+#    /legal/<slug>/           product legal overview
+#    /legal/<slug>/privacy/   full Privacy Policy (master text + this product's schedule)
+#    /legal/<slug>/terms/     full Terms of Use   (master text + this product's clauses)
+#    /legal/<slug>/support/   support, contact and FAQ
+#  and a card on the home page.
+#
+#  To add a product: copy an entry below, change the values, commit and push.
+#  Text fields accept Markdown. Always quote "Yes" / "No" values.
+#  Dates are "YYYY-MM-DD"; "updated" is when this product's details last changed.
+# ─────────────────────────────────────────────────────────────────────────────
+
+- slug: photos
+  name: Photos
+  kind: Android app
+  platform: Android 12 and later
+  design: iOS-style design, built natively for Android
+  tagline: Your photos, calm and private.
+  summary: >-
+    A calm, iOS-style photo gallery for Android, with photos you can lock
+    behind a password that still look like ordinary pictures to everyone else.
+  icon: https://ratiojuris.github.io/photos/assets/icon-512.png
+  accent: "#e9a23b"
+  version: 1.0.0
+  homepage: https://ratiojuris.github.io/photos/
+  repo: RatioJuris/photos
+  license: GPL-3.0-or-later
+  developers: [ratiojuris]
+  publishers: [prajnabytes]
+  updated: "2026-11-07"
+  stores: []
+
+  privacy:
+    no: [account, server, analytics, advertising, tracking]
+    highlights:
+      - We do not collect, receive, store or sell any personal data.
+      - Your photos never leave your device unless you share them yourself.
+      - Protected photos are encrypted on your device. A forgotten password cannot be recovered by anyone, including us.
+    data:
+      - what: Photos and videos (Android MediaStore)
+        why: To show your gallery, albums and search
+        leaves: "No"
+      - what: Location metadata stored inside photos and videos
+        why: To show where a photo was taken, and the Places map
+        leaves: "No"
+      - what: Passwords you type for protected photos
+        why: To encrypt or open a protected photo
+        leaves: "No. Never stored; discarded after use."
+      - what: App settings and the list of archived items
+        why: To remember your preferences
+        leaves: "No. Kept in the app's private storage."
+    permissions:
+      - name: Photos and videos (`READ_MEDIA_IMAGES`, `READ_MEDIA_VIDEO`, `READ_MEDIA_VISUAL_USER_SELECTED`)
+        why: To show your library. On recent Android versions you may grant access to selected items only.
+      - name: Media location (`ACCESS_MEDIA_LOCATION`)
+        why: To read location metadata in your photos, on the device.
+      - name: Internet (`INTERNET`)
+        why: Only to download map images, and only when Maps is turned on.
+    network:
+      - party: OpenStreetMap Foundation (`tile.openstreetmap.org`)
+        when: Only when you turn Maps on. Maps are off by default.
+        receives: Your device's IP address and the map area being viewed. No photos, file names or other information.
+        policy: https://osmfoundation.org/wiki/Privacy_Policy
+      - party: The maps app you choose
+        when: Only when you tap **Open in Maps**
+        receives: The coordinates of that photo. That app's own privacy policy applies.
+    storage:
+      - Settings and the archived-items list, in the app's private storage.
+      - A location index, on the device. It is deleted when you turn location features off.
+      - A cache of map images of up to 60 MB, refreshed after 7 days. You can clear it in Settings.
+      - Temporary copies made for sharing, deleted automatically within 15 minutes.
+      - App data is excluded from Android cloud backup and device-to-device transfer.
+    retention: >-
+      Uninstalling Photos removes all of its private data. Your photos, videos
+      and protected photo files remain in your device's storage until you delete them.
+    sections:
+      - title: Sharing
+        body: >-
+          Photos only shares content when you explicitly choose to, using Android's
+          share sheet. Protected photos are shared as protected files unless you
+          explicitly choose to share an unlocked original. Temporary copies created
+          for sharing are deleted automatically.
+      - title: Encryption and password recovery
+        body: >-
+          Protected photos are encrypted on your device with Argon2id and AES-256-GCM,
+          using a key derived from your password. **There is no password recovery.**
+          If you forget a password, the protected original cannot be recovered by
+          anyone, including us.
+
+  terms:
+    clauses:
+      - title: Protected photos and lost passwords
+        body: >-
+          You are responsible for remembering the passwords you set. Passwords are
+          never stored and cannot be reset, so a forgotten password means the
+          protected original is permanently inaccessible. We cannot recover it and
+          are not responsible for that loss.
+      - title: Maps
+        body: >-
+          Map data © OpenStreetMap contributors, available under the Open Database
+          Licence. Use of the map service is subject to the OpenStreetMap Foundation's
+          policies.
+      - title: Independence
+        body: Photos is an independent app and is not affiliated with Apple or Google.
+
+  support:
+    faq:
+      - q: How do I open a protected photo?
+        a: Open the photo, tap **•••**, choose **Continue Securely** and enter the password.
+      - q: I entered the password and nothing happened.
+        a: A wrong password intentionally leaves the preview on screen without an error. Check the password and try again.
+      - q: I forgot my password.
+        a: There is no password recovery. The original cannot be recovered by anyone, including the developer.
+      - q: Why does another app show only a small or blurred image?
+        a: That is the protected photo's preview. Other apps never see the original.
+      - q: Does Photos upload my pictures?
+        a: No. Photos has no server and no account.
+
+
+- slug: ab-layout
+  name: AB Layout
+  full_name: Advocate Benefit Layout
+  kind: Microsoft Word add-in
+  platform: Word for Windows, Mac and the web
+  design: Lives inside Word's ribbon and task pane, built for Indian court filings
+  tagline: Court-ready documents. Without changing a word.
+  summary: >-
+    A free Word add-in for Indian advocates. It checks petitions and affidavits,
+    makes formatting consistent, converts Kruti Dev ↔ Unicode Hindi, and confirms
+    afterwards that every word is exactly as you wrote it.
+  icon: https://ratiojuris.github.io/ab-layout/assets/icon.svg
+  accent: "#3b6fb6"
+  version: 4.0.0
+  homepage: https://ratiojuris.github.io/ab-layout/
+  repo: RatioJuris/ab-layout
+  license: GPL-3.0-or-later, with additional terms under section 7
+  developers: [prajnabytes, ratiojuris]
+  publishers: [prajnabytes, ratiojuris]
+  updated: "2026-11-09"
+  stores: []
+
+  privacy:
+    no: [account, server, analytics, advertising, AI]
+    highlights:
+      - Your document is processed inside Microsoft Word. It is never uploaded to us.
+      - Custom profiles stay on your computer or in your browser.
+      - The Windows version works fully offline.
+    data:
+      - what: The text and formatting of the open document
+        why: To check and clean formatting, convert Hindi and set page layout
+        leaves: "No. Processed inside Word."
+      - what: Your custom profiles and selected profile
+        why: To remember your chamber style
+        leaves: "No. Stored on your computer or in your browser."
+      - what: Diagnostic log (Windows version)
+        why: To help diagnose errors you choose to report
+        leaves: "No. Contains times and error messages, never document text."
+    permissions:
+      - name: Read and write document (`ReadWriteDocument`, web version)
+        why: To read and format the open document.
+      - name: Word add-in registration (Windows version)
+        why: The installer registers the add-in for your Windows user account only. No administrator rights are needed.
+    network_note: The Windows version makes no network connections.
+    network:
+      - party: GitHub Pages (`ratiojuris.github.io`), operated by GitHub, Inc.
+        when: Web version only. Each time the add-in opens, its program files and layout presets are loaded.
+        receives: Your IP address and browser information, as with any web request. Never document content.
+        policy: https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement
+      - party: Microsoft (`appsforoffice.microsoft.com`)
+        when: Web version only. Microsoft's Office.js library is required by every web add-in.
+        receives: Your IP address and browser information.
+        policy: https://privacy.microsoft.com/privacystatement
+    storage:
+      - 'Windows: custom profiles in `%APPDATA%\AB Layout\profiles.json`.'
+      - 'Windows: a diagnostic log in `%LOCALAPPDATA%\AB Layout\ab-layout.log`, limited to 256 KB.'
+      - "Web: custom profiles and your selected profile, in your browser's local storage."
+    retention: >-
+      Uninstalling removes the add-in and its registration. Custom profiles are kept
+      so that they survive a reinstall. To remove them, delete the `AB Layout` folders
+      in `%APPDATA%` and `%LOCALAPPDATA%` (Windows), or clear site data for
+      `ratiojuris.github.io` in your browser (web).
+    sections:
+      - title: Client confidentiality
+        body: >-
+          AB Layout is designed so that client documents never leave Word. Nothing is
+          sent to us or to any AI service. Your use of Word itself, including OneDrive
+          or Microsoft 365 storage, is governed by Microsoft's terms.
+
+  terms:
+    clauses:
+      - title: Not legal advice; check your court's rules
+        body: >-
+          Layout profiles and paper presets are conveniences. They do not guarantee
+          that a filing complies with any court's rules or will be accepted. You
+          remain responsible for your filings.
+      - title: Review before filing
+        body: >-
+          Save your document before applying changes. AB Layout checks that your text
+          is unchanged after formatting, but you are responsible for reviewing the
+          final document.
+      - title: Names and attribution
+        body: >-
+          The licence includes additional terms under section 7 of the GNU GPL about
+          attribution and use of the names. See the
+          [NOTICE](https://github.com/RatioJuris/ab-layout/blob/main/NOTICE) file.
+      - title: Microsoft
+        body: AB Layout is not affiliated with Microsoft. Word and Microsoft 365 are trademarks of Microsoft Corporation.
+
+  support:
+    guide: https://github.com/RatioJuris/ab-layout/blob/main/docs/USER_GUIDE.md
+    faq:
+      - q: Does AB Layout use AI or change my wording?
+        a: No. It uses no AI, and after every run it checks that every paragraph has the same words in the same order.
+      - q: Is my client's document uploaded anywhere?
+        a: No. The document is processed inside Word. There is no server and no account.
+      - q: Does a profile guarantee my filing will be accepted?
+        a: No. Profiles are conveniences. Always check your court's current rules.
+      - q: Can I undo?
+        a: Yes. Use **Restore** after applying. The Windows version also supports one-step Undo.
+      - q: Which Word versions are supported?
+        a: The Windows version needs Word 2013 or later. The web version works in Microsoft 365, Word 2019 or later, and Word for the web. Word 2007 and 2010 cannot run add-ins.
+      - q: What does it cost?
+        a: Nothing. AB Layout is free and open source.
+
+
+- slug: tubeshield
+  name: TubeShield
+  kind: Browser extension
+  platform: Chrome and Microsoft Edge (Manifest V3)
+  design: Lightweight popup and options page, native to the browser
+  tagline: Take back control of your video browsing.
+  summary: >-
+    Browser-side ad blocking and configurable video-site and URL blocking for
+    Chrome and Edge. Preferences and statistics stay in your browser.
+  icon: https://ratiojuris.github.io/TubeShield/assets/favicon.svg
+  accent: "#e5484d"
+  version: 1.0.0
+  homepage: https://ratiojuris.github.io/TubeShield/
+  repo: RatioJuris/TubeShield
+  license:
+  developers: [ratiojuris]
+  publishers: [ratiojuris]
+  updated: "2026-10-03"
+  stores:
+    - name: Chrome Web Store
+      url: https://chromewebstore.google.com/detail/tubeshield/mdalbhgcgmblklfgpjmpbchbgidfkclm
+    - name: Microsoft Edge Add-ons
+      url: https://microsoftedge.microsoft.com/addons/detail/tubeshield/ioobkmbkklooimjmkanbeconldikdoeg
+
+  privacy:
+    no: [account, server, analytics, advertising, telemetry]
+    highlights:
+      - Settings and statistics are stored only in your browser's extension storage.
+      - Blocking is carried out by the browser itself. TubeShield does not read or send your traffic.
+      - TubeShield makes no network requests of its own.
+    data:
+      - what: Blocked-site entries (domains and URL patterns you add)
+        why: To create the blocking rules you configure
+        leaves: "No"
+      - what: Ad-blocking and site-blocking preferences
+        why: To remember your settings
+        leaves: "No"
+      - what: Local statistics (ads blocked, time of the last block)
+        why: To show you what TubeShield has done
+        leaves: "No"
+      - what: The layout of YouTube pages you open
+        why: To find and hide ad elements and skip video ads
+        leaves: "No. Read in the page; nothing is recorded or sent."
+    permissions:
+      - name: "`storage`"
+        why: To save your settings and statistics in the browser.
+      - name: "`declarativeNetRequest`"
+        why: To let the browser block ad requests and the sites you list.
+      - name: Access to youtube.com, youtu.be, googlevideo.com, vimeo.com, dailymotion.com and twitch.tv
+        why: To apply blocking on these video sites.
+      - name: Access to doubleclick.net, googlesyndication.com and googleadservices.com
+        why: To block advertising requests from these ad networks.
+    network_note: >-
+      TubeShield makes no network requests of its own. It only tells the browser
+      which requests to block, using the browser's Declarative Net Request API.
+    network: []
+    storage:
+      - Settings and statistics, in the browser's local extension storage. They are not synced between devices.
+      - '**Reset Statistics** and **Restore Default Settings** on the Options page clear them.'
+    retention: Data stays until you reset it or uninstall TubeShield. Uninstalling removes all of it.
+
+  terms:
+    clauses:
+      - title: Your blocking configuration
+        body: >-
+          You are responsible for the sites and URL patterns you add, and for the
+          effects of turning blocking on or off. Blocking a whole domain may stop a
+          website from loading normally.
+      - title: Effectiveness and statistics
+        body: >-
+          Websites change often. We do not guarantee that every advertisement or
+          request will be blocked. Statistics are informational and may not count
+          every blocked request.
+      - title: Third-party websites
+        body: >-
+          You remain responsible for complying with the terms of the websites you
+          visit. TubeShield is not affiliated with YouTube, Google, Vimeo,
+          Dailymotion, Twitch or Microsoft.
+
+  support:
+    faq:
+      - q: Does TubeShield collect my browsing history?
+        a: No. Blocking is done by the browser's own rule engine, and TubeShield sends nothing anywhere.
+      - q: A website stopped loading after I added it.
+        a: Remove it from the blocked-sites list on the Options page, or turn site blocking off.
+      - q: How do I reset everything?
+        a: Open the Options page and use **Reset Statistics** or **Restore Default Settings**.

@@ -1,0 +1,43 @@
+<footer class="site-footer">
+  <div class="container site-footer__grid">
+    <div class="site-footer__brand">
+      <a class="brand" href="{{ '/' | relative_url }}">
+        {% include scales.html %}
+        <span class="brand__name">RatioJuris</span>
+      </a>
+      <p class="muted">{{ site.tagline }}. Reason before rule. Structure before scale.</p>
+      <p class="hallmark hallmark--small" aria-label="Gonardiya">Gonardiya</p>
+    </div>
+
+    <div>
+      <h2 class="site-footer__title">Products</h2>
+      <ul class="plain-list">
+        {%- for p in site.data.products %}
+        <li><a href="{{ '/legal/' | append: p.slug | append: '/' | relative_url }}">{{ p.name }}</a></li>
+        {%- endfor %}
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="site-footer__title">Legal</h2>
+      <ul class="plain-list">
+        <li><a href="{{ '/legal/' | relative_url }}">Legal Centre</a></li>
+        <li><a href="{{ '/legal/privacy/' | relative_url }}">Privacy Policy</a></li>
+        <li><a href="{{ '/legal/terms/' | relative_url }}">Terms of Use</a></li>
+        <li><a href="{{ '/contact/' | relative_url }}">Contact</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="site-footer__title">Elsewhere</h2>
+      <ul class="plain-list">
+        <li><a href="https://github.com/{{ site.github_user }}" rel="noopener">GitHub</a></li>
+        <li><a href="mailto:{{ site.contact_email }}">{{ site.contact_email }}</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container site-footer__base">
+    <p>© {{ site.time | date: "%Y" }} RatioJuris · Independent · Pseudonymous · System-Oriented</p>
+    <p>No cookies. No analytics. No trackers.</p>
+  </div>
+</footer>

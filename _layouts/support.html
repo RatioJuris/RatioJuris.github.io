@@ -1,0 +1,48 @@
+---
+layout: doc
+---
+{%- assign p = page.product -%}
+
+<div class="cards cards--3">
+  <a class="card card--link" href="mailto:{{ site.contact_email }}?subject={{ p.name | append: ' support' | uri_escape }}">
+    <span class="card__eyebrow">Email</span>
+    <strong class="card__title">{{ site.contact_email }}</strong>
+    <span class="card__text">Questions, feedback and privacy requests. Please start the subject with “{{ p.name }}”.</span>
+  </a>
+  <a class="card card--link" href="https://github.com/{{ p.repo }}/issues" rel="noopener">
+    <span class="card__eyebrow">GitHub</span>
+    <strong class="card__title">Report a problem</strong>
+    <span class="card__text">Bugs and feature requests. Issues are public, so never include personal information.</span>
+  </a>
+  <a class="card card--link" href="https://github.com/{{ p.repo }}/security" rel="noopener">
+    <span class="card__eyebrow">Security</span>
+    <strong class="card__title">Report a vulnerability</strong>
+    <span class="card__text">Please report security issues privately, as described on the security page.</span>
+  </a>
+</div>
+
+<div class="prose">
+
+{%- if p.support.faq.size > 0 %}
+<h2 id="faq">Common questions</h2>
+<div class="faq">
+  {%- for f in p.support.faq %}
+  <details>
+    <summary>{{ f.q }}</summary>
+    {{ f.a | markdownify }}
+  </details>
+  {%- endfor %}
+</div>
+{%- endif %}
+
+<h2 id="links">Useful links</h2>
+<ul class="link-list">
+  {%- if p.homepage %}<li><a href="{{ p.homepage }}">{{ p.name }} website</a></li>{% endif %}
+  {%- if p.support.guide %}<li><a href="{{ p.support.guide }}" rel="noopener">User guide</a></li>{% endif %}
+  {%- for s in p.stores %}<li><a href="{{ s.url }}" rel="noopener">{{ p.name }} on {{ s.name }}</a></li>{% endfor %}
+  <li><a href="https://github.com/{{ p.repo }}" rel="noopener">Source code</a></li>
+  <li><a href="{{ '/legal/' | append: p.slug | append: '/privacy/' | relative_url }}">{{ p.name }} Privacy Policy</a></li>
+  <li><a href="{{ '/legal/' | append: p.slug | append: '/terms/' | relative_url }}">{{ p.name }} Terms of Use</a></li>
+</ul>
+
+</div>

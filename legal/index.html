@@ -1,0 +1,56 @@
+---
+layout: doc
+title: Legal Centre
+heading: Legal Centre
+description: Privacy policies, terms of use and support for every RatioJuris product, in one place.
+---
+<p class="lede">Every RatioJuris product's privacy policy, terms of use and support page, in one place and in one consistent form.</p>
+
+<div class="cards cards--2">
+  <a class="card card--link" href="{{ '/legal/privacy/' | relative_url }}">
+    <span class="card__eyebrow">All products</span>
+    <strong class="card__title">Privacy Policy</strong>
+    <span class="card__text">How our software and this website handle information, and your rights.</span>
+  </a>
+  <a class="card card--link" href="{{ '/legal/terms/' | relative_url }}">
+    <span class="card__eyebrow">All products</span>
+    <strong class="card__title">Terms of Use</strong>
+    <span class="card__text">The general terms for using RatioJuris software and this website.</span>
+  </a>
+</div>
+
+<div class="prose">
+<h2 id="products">Products</h2>
+</div>
+
+<div class="table-wrap">
+<table class="register">
+  <thead>
+    <tr><th scope="col">Product</th><th scope="col">Platform</th><th scope="col">Documents</th><th scope="col">Last updated</th></tr>
+  </thead>
+  <tbody>
+    {%- for p in site.data.products %}
+    {%- assign base = '/legal/' | append: p.slug | append: '/' %}
+    {%- assign updated = site.legal_updated %}{% if p.updated > updated %}{% assign updated = p.updated %}{% endif %}
+    <tr style="--accent: {{ p.accent | default: '#d4af37' }}">
+      <td><a class="register__name" href="{{ base | relative_url }}">{% if p.icon %}<img src="{{ p.icon }}" alt="" width="28" height="28" loading="lazy">{% endif %}{{ p.name }}</a></td>
+      <td>{{ p.kind }}<br><span class="muted small">{{ p.platform }}</span></td>
+      <td class="register__docs">
+        <a href="{{ base | append: 'privacy/' | relative_url }}">Privacy</a>
+        <a href="{{ base | append: 'terms/' | relative_url }}">Terms</a>
+        <a href="{{ base | append: 'support/' | relative_url }}">Support</a>
+      </td>
+      <td><time datetime="{{ updated }}">{{ updated | date: "%-d %b %Y" }}</time></td>
+    </tr>
+    {%- endfor %}
+  </tbody>
+</table>
+</div>
+
+<div class="prose">
+<h2 id="how">How this works</h2>
+<p>All product documents are generated from one public register. The general text is written once, and each product adds its own facts: what it accesses, its permissions, its network connections and any terms specific to it. When something changes, every affected page is updated together, and the full history is public in the <a href="https://github.com/{{ site.github_user }}/{{ site.github_user }}.github.io/commits/main" rel="noopener">revision log</a>.</p>
+
+<h2 id="contact">Contact</h2>
+<p>Privacy requests, questions and grievances: <a href="mailto:{{ site.contact_email }}">{{ site.contact_email }}</a>.</p>
+</div>

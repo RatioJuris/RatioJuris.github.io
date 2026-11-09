@@ -1,0 +1,37 @@
+---
+layout: doc
+title: Contact
+heading: Contact
+description: How to reach RatioJuris for support, privacy requests and security reports.
+---
+<p class="lede">RatioJuris is independent and pseudonymous. There is no contact form and no tracking; email and GitHub are the ways to reach us.</p>
+
+<div class="cards cards--3">
+  <a class="card card--link" href="mailto:{{ site.contact_email }}">
+    <span class="card__eyebrow">Email</span>
+    <strong class="card__title">{{ site.contact_email }}</strong>
+    <span class="card__text">Support, privacy requests and grievances. Please name the product in the subject.</span>
+  </a>
+  <a class="card card--link" href="https://github.com/{{ site.github_user }}" rel="noopener">
+    <span class="card__eyebrow">GitHub</span>
+    <strong class="card__title">Issues and source code</strong>
+    <span class="card__text">Report bugs on each product's repository. Issues are public.</span>
+  </a>
+  <a class="card card--link" href="{{ '/legal/' | relative_url }}">
+    <span class="card__eyebrow">Legal Centre</span>
+    <strong class="card__title">Policies and support</strong>
+    <span class="card__text">Privacy, terms and help for every product.</span>
+  </a>
+</div>
+
+<div class="prose">
+<h2 id="product-support">Product support</h2>
+<ul class="link-list">
+  {%- for p in site.data.products %}
+  <li><a href="{{ '/legal/' | append: p.slug | append: '/support/' | relative_url }}">{{ p.name }} Support</a> <span class="muted">· {{ p.kind }}</span></li>
+  {%- endfor %}
+</ul>
+
+<h2 id="security">Security</h2>
+<p>Please report vulnerabilities privately using the “Report a vulnerability” option on the product's GitHub security page, or by email. Never post passwords, private keys or tokens in public issues.</p>
+</div>

@@ -1,0 +1,128 @@
+---
+layout: default
+title: RatioJuris
+body_class: home
+---
+<section class="hero">
+  <div class="container hero__inner">
+    {% include scales.html animate=true %}
+    <h1 class="hero__title">RatioJuris</h1>
+    <p class="hero__sub"><span>The Logic of Law</span></p>
+    <p class="hallmark hallmark--shine" aria-label="Gonardiya">Gonardiya<span class="hallmark__star" aria-hidden="true"></span></p>
+    <div class="maxims" aria-label="Maxims">
+      <p><em>Ratio ante regulam</em><span>Reason before rule</span></p>
+      <p><em>Structura ante scalam</em><span>Structure before scale</span></p>
+      <p><em>Justitia per systema</em><span>Justice through systems</span></p>
+      <p><em>Lex per logicam</em><span>Law through logic</span></p>
+    </div>
+    <div class="hero__actions">
+      <a class="btn btn--gold" href="#products">Explore the work</a>
+      <a class="btn" href="{{ '/legal/' | relative_url }}">Legal Centre</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="container container--narrow position">
+    <p class="position__quote">Law without reason becomes authority.<br>Systems without justice become control.</p>
+    <p class="muted">RatioJuris builds where both are held accountable, through structure, logic and deliberate design. Each product is crafted for its platform, with its own design language, and held to one standard of privacy.</p>
+  </div>
+</section>
+
+<section class="section" id="products">
+  <div class="container">
+    <header class="section__head">
+      <p class="eyebrow">§ I · Products</p>
+      <h2>Software, each with its own design</h2>
+      <p class="muted">Every product has one Privacy Policy, Terms of Use and Support page in the <a href="{{ '/legal/' | relative_url }}">Legal Centre</a>.</p>
+    </header>
+
+    <div class="products">
+      {%- for p in site.data.products %}
+      {%- assign base = '/legal/' | append: p.slug | append: '/' %}
+      <article class="product" style="--accent: {{ p.accent | default: '#d4af37' }}">
+        <div class="product__top">
+          <span class="product__icon">{% if p.icon %}<img src="{{ p.icon }}" alt="" width="56" height="56" loading="lazy">{% else %}{{ p.name | slice: 0 }}{% endif %}</span>
+          <div>
+            <h3 class="product__name">{{ p.name }}</h3>
+            <p class="product__kind">{{ p.kind }} · {{ p.platform }}</p>
+          </div>
+        </div>
+        <p class="product__tagline">{{ p.tagline }}</p>
+        <p class="product__summary">{{ p.summary }}</p>
+        {%- if p.design %}<p class="product__design"><span>Design</span>{{ p.design }}</p>{% endif %}
+        {%- if p.privacy.no.size > 0 %}
+        <p class="no-chips no-chips--small">{% for n in p.privacy.no %}<span>No {{ n }}</span>{% endfor %}</p>
+        {%- endif %}
+        <div class="product__actions">
+          {%- if p.homepage %}<a class="btn btn--accent" href="{{ p.homepage }}">Visit {{ p.name }}</a>{% endif %}
+          {%- for s in p.stores %}<a class="btn btn--small" href="{{ s.url }}" rel="noopener">{{ s.name }}</a>{% endfor %}
+        </div>
+        <nav class="product__legal" aria-label="{{ p.name }} legal">
+          <a href="{{ base | append: 'privacy/' | relative_url }}">Privacy</a>
+          <a href="{{ base | append: 'terms/' | relative_url }}">Terms</a>
+          <a href="{{ base | append: 'support/' | relative_url }}">Support</a>
+          <a href="https://github.com/{{ p.repo }}" rel="noopener">Source</a>
+        </nav>
+      </article>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt" id="works">
+  <div class="container">
+    <header class="section__head">
+      <p class="eyebrow">§ II · Works</p>
+      <h2>Doctrine, legal technology and research</h2>
+    </header>
+    <div class="cards cards--3">
+      {%- for w in site.data.works %}
+      <a class="card card--link" href="https://github.com/{{ w.repo }}" rel="noopener">
+        <span class="card__eyebrow">{{ w.category }}{% if w.language %} · {{ w.language }}{% endif %}</span>
+        <strong class="card__title">{{ w.name }}</strong>
+        <span class="card__text">{{ w.summary }}</span>
+      </a>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section" id="repositories">
+  <div class="container">
+    <header class="section__head">
+      <p class="eyebrow">§ III · Repositories</p>
+      <h2>Everything on GitHub</h2>
+      <p class="muted">Updated live from GitHub, most recent first.</p>
+    </header>
+    <div class="repos" data-user="{{ site.github_user }}" aria-live="polite">
+      <p class="muted">Loading repositories…</p>
+    </div>
+    <noscript><p><a href="https://github.com/{{ site.github_user }}?tab=repositories">See all repositories on GitHub</a>.</p></noscript>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container container--narrow">
+    <header class="section__head">
+      <p class="eyebrow">§ IV · Doctrine</p>
+      <h2>Principles</h2>
+    </header>
+    <div class="doctrine">
+      <p><em>Ratio fundamentum legis est</em><span>Reason is the foundation of law.</span></p>
+      <p><em>Systemata exitus determinant</em><span>Systems determine outcomes.</span></p>
+      <p><em>Justitia non dicitur — construitur</em><span>Justice is not merely declared; it is constructed.</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container--narrow callout">
+    <p class="eyebrow">Legal Centre</p>
+    <h2>One register. Every policy.</h2>
+    <p class="muted">Each product's Privacy Policy, Terms of Use and Support page is generated from a single public register, so they stay consistent, current and fully versioned.</p>
+    <a class="btn btn--gold" href="{{ '/legal/' | relative_url }}">Open the Legal Centre</a>
+  </div>
+</section>
+
+<script src="{{ '/assets/js/repos.js' | relative_url }}" defer></script>

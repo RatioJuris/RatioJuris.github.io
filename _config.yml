@@ -1,0 +1,30 @@
+title: RatioJuris
+tagline: The Logic of Law
+description: >-
+  Software, doctrine and legal technology by RatioJuris, with one Legal Centre
+  for the privacy policy, terms and support of every product.
+url: https://ratiojuris.github.io
+baseurl: ""
+lang: en-IN
+
+github_user: RatioJuris
+contact_email: RatioJuris@duck.com
+
+# Date the master Privacy Policy / Terms of Use text last changed (YYYY-MM-DD).
+# Each product page shows whichever is later: this date or the product's own "updated" date.
+legal_updated: "2026-11-09"
+governing_law: India
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  auto_ids: true
+
+plugins: []
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .github

@@ -1,0 +1,8 @@
+{%- assign p = include.product -%}
+<div class="product-chip" style="--accent: {{ p.accent | default: '#d4af37' }}">
+  <span class="product-chip__icon">{% if p.icon %}<img src="{{ p.icon }}" alt="" width="40" height="40" loading="lazy">{% else %}{{ p.name | slice: 0 }}{% endif %}</span>
+  <span class="product-chip__text">
+    <strong>{{ p.name }}</strong>
+    <span>{{ p.kind }} · {{ p.platform }}</span>
+  </span>
+</div>

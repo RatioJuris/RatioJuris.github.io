@@ -1,0 +1,16 @@
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="{{ '/' | relative_url }}" aria-label="RatioJuris home">
+      {% include scales.html %}
+      <span class="brand__name">RatioJuris</span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="{{ '/#products' | relative_url }}">Products</a>
+      <a href="{{ '/#works' | relative_url }}">Works</a>
+      <a href="{{ '/legal/' | relative_url }}"{% if page.url contains '/legal/' %} aria-current="page"{% endif %}>Legal Centre</a>
+      <a href="{{ '/contact/' | relative_url }}"{% if page.url == '/contact/' %} aria-current="page"{% endif %}>Contact</a>
+      <a class="site-nav__gh" href="https://github.com/{{ site.github_user }}" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>

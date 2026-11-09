@@ -1,0 +1,154 @@
+---
+layout: doc
+---
+{%- comment -%}
+  MASTER PRIVACY POLICY
+  Used for /legal/privacy/ (no product) and /legal/<slug>/privacy/ (one product).
+  Product-specific facts come from _data/products.yml.
+{%- endcomment -%}
+{%- assign p = page.product -%}
+{%- assign mail_subject = "Privacy request" -%}
+{%- if p %}{% assign mail_subject = p.name | append: " privacy request" %}{% endif -%}
+
+{%- if p %}
+<aside class="glance" aria-label="Summary">
+  <h2 class="glance__title">At a glance</h2>
+  <ul class="glance__list">
+    {%- for h in p.privacy.highlights %}
+    <li>{{ h | markdownify | remove: "<p>" | remove: "</p>" | strip }}</li>
+    {%- endfor %}
+  </ul>
+  {%- if p.privacy.no.size > 0 %}
+  <p class="no-chips">{% for n in p.privacy.no %}<span>No {{ n }}</span>{% endfor %}</p>
+  {%- endif %}
+</aside>
+{%- endif %}
+
+<div class="prose">
+
+{%- if p %}
+<p>This Privacy Policy explains how <strong>{{ p.name }}</strong>{% if p.full_name %} ({{ p.full_name }}){% endif %}, a {{ p.kind | downcase }} for {{ p.platform }}, handles information. {{ p.name }} is developed by {% include entity-names.html keys=p.developers %} and published by {% include entity-names.html keys=p.publishers %} (“we”, “us”).</p>
+{%- else %}
+<p>This Privacy Policy explains how software published by <strong>RatioJuris</strong> and its partners, and this website, handle information (“we”, “us”). Every product also has its own policy, which sets out exactly what that product accesses, stores and sends. Product policies are listed <a href="#products">below</a>.</p>
+{%- endif %}
+
+<h2 id="who">Who we are</h2>
+{%- if p %}
+<p>{{ p.name }} is developed by {% include entity-names.html keys=p.developers %} and published by {% include entity-names.html keys=p.publishers %}.</p>
+{%- else %}
+<p>RatioJuris is an independent, pseudonymous developer. Some products are published together with <strong>PrajnaBytes International Private Limited</strong>, a company incorporated in India. Each product's policy names its developer and publisher.</p>
+{%- endif %}
+<p>For any privacy question or request, write to <a href="mailto:{{ site.contact_email }}?subject={{ mail_subject | uri_escape }}">{{ site.contact_email }}</a>.</p>
+
+{%- if p %}
+<h2 id="information">Information {{ p.name }} handles</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th scope="col">What</th><th scope="col">Why</th><th scope="col">Leaves your device?</th></tr></thead>
+  <tbody>
+    {%- for d in p.privacy.data %}
+    <tr>
+      <td>{{ d.what | markdownify | remove: "<p>" | remove: "</p>" | strip }}</td>
+      <td>{{ d.why | markdownify | remove: "<p>" | remove: "</p>" | strip }}</td>
+      <td>{{ d.leaves | markdownify | remove: "<p>" | remove: "</p>" | strip }}</td>
+    </tr>
+    {%- endfor %}
+  </tbody>
+</table>
+</div>
+
+{%- if p.privacy.permissions.size > 0 %}
+<h2 id="permissions">Permissions</h2>
+<ul>
+  {%- for perm in p.privacy.permissions %}
+  <li><strong>{{ perm.name | markdownify | remove: "<p>" | remove: "</p>" | strip }}:</strong> {{ perm.why | markdownify | remove: "<p>" | remove: "</p>" | strip }}</li>
+  {%- endfor %}
+</ul>
+{%- endif %}
+
+<h2 id="network">Network connections and third parties</h2>
+{%- if p.privacy.network_note %}
+<p>{{ p.privacy.network_note | markdownify | remove: "<p>" | remove: "</p>" | strip }}</p>
+{%- endif %}
+{%- if p.privacy.network.size > 0 %}
+<div class="table-wrap">
+<table>
+  <thead><tr><th scope="col">Who</th><th scope="col">When</th><th scope="col">What they receive</th></tr></thead>
+  <tbody>
+    {%- for n in p.privacy.network %}
+    <tr>
+      <td>{{ n.party | markdownify | remove: "<p>" | remove: "</p>" | strip }}{% if n.policy %}<br><a class="small" href="{{ n.policy }}" rel="noopener">Their privacy policy</a>{% endif %}</td>
+      <td>{{ n.when | markdownify | remove: "<p>" | remove: "</p>" | strip }}</td>
+      <td>{{ n.receives | markdownify | remove: "<p>" | remove: "</p>" | strip }}</td>
+    </tr>
+    {%- endfor %}
+  </tbody>
+</table>
+</div>
+{%- endif %}
+<p>We do not operate any server that receives information from {{ p.name }}.</p>
+
+<h2 id="storage">Storage, retention and deletion</h2>
+<ul>
+  {%- for s in p.privacy.storage %}
+  <li>{{ s | markdownify | remove: "<p>" | remove: "</p>" | strip }}</li>
+  {%- endfor %}
+</ul>
+<p>{{ p.privacy.retention | markdownify | remove: "<p>" | remove: "</p>" | strip }}</p>
+
+{%- for s in p.privacy.sections %}
+<h2 id="{{ s.title | slugify }}">{{ s.title }}</h2>
+{{ s.body | markdownify }}
+{%- endfor %}
+
+{%- else %}
+<h2 id="products">Products covered</h2>
+<p>The following products each have their own policy, which forms part of this Privacy Policy:</p>
+<ul class="link-list">
+  {%- for prod in site.data.products %}
+  <li><a href="{{ '/legal/' | append: prod.slug | append: '/privacy/' | relative_url }}">{{ prod.name }} Privacy Policy</a> <span class="muted">· {{ prod.kind }}, {{ prod.platform }}</span></li>
+  {%- endfor %}
+</ul>
+<p>Our software is designed to work on your device. Unless a product's policy says otherwise, it does not send your personal data to us.</p>
+
+<h2 id="website">This website</h2>
+<p>This website is hosted on <strong>GitHub Pages</strong>, operated by GitHub, Inc. GitHub may log technical information such as your IP address when you visit, for security and to keep the service running. See the <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">GitHub Privacy Statement</a>.</p>
+<p>This website uses no cookies, analytics or trackers. The list of repositories on the home page is loaded by your browser directly from GitHub's public API, so GitHub also receives your IP address for that request.</p>
+{%- endif %}
+
+<h2 id="never">What we never do</h2>
+<ul>
+  <li>We do not sell, rent or trade personal data.</li>
+  <li>We do not show advertising or use advertising identifiers.</li>
+  <li>We do not build profiles of you or track you across apps and websites.</li>
+</ul>
+
+<h2 id="contacting-us">If you contact us</h2>
+<p>If you email us, we receive your email address and whatever you choose to include in your message. We use it only to reply and to deal with your request, and we delete correspondence when it is no longer needed for that purpose, unless the law requires us to keep it. Our address is a DuckDuckGo Email Protection address, so DuckDuckGo forwards your message to us; see the <a href="https://duckduckgo.com/privacy" rel="noopener">DuckDuckGo Privacy Policy</a>.</p>
+<p>Issues and discussions on GitHub are <strong>public</strong>. Do not post personal information, passwords or private keys there. GitHub's own privacy statement applies to your GitHub account.</p>
+<p>Under India's Digital Personal Data Protection Act, 2023, we process this information because you have chosen to provide it for that purpose.</p>
+
+<h2 id="children">Children</h2>
+<p>{% if p %}{{ p.name }} does{% else %}Our software does{% endif %} not knowingly collect information from anyone, including children. If you believe a child has sent us personal information by email, contact us and we will delete it.</p>
+
+<h2 id="security">Security</h2>
+<p>We design our software to keep information on your device and to handle as little data as possible. No system is completely secure, so please keep your device, operating system and browser up to date. To report a vulnerability, follow the security instructions on {% if p %}the <a href="https://github.com/{{ p.repo }}/security" rel="noopener">{{ p.name }} security page</a>{% else %}each product's GitHub security page{% endif %}, or email us.</p>
+
+<h2 id="rights">Your rights</h2>
+<p>Depending on where you live, including under India's Digital Personal Data Protection Act, 2023 and the EU and UK General Data Protection Regulation, you may have the right to:</p>
+<ul>
+  <li>ask what personal data we hold about you, and get a copy;</li>
+  <li>ask us to correct, complete, update or erase it;</li>
+  <li>withdraw consent you have given;</li>
+  <li>nominate another person to exercise your rights if you die or become incapacitated; and</li>
+  <li>have a grievance addressed, and complain to your data protection authority, including the Data Protection Board of India.</li>
+</ul>
+<p>Because {% if p %}{{ p.name }} keeps{% else %}our software keeps{% endif %} information on your device, we usually hold no personal data about you other than emails you send us. To make a request, email <a href="mailto:{{ site.contact_email }}?subject={{ mail_subject | uri_escape }}">{{ site.contact_email }}</a>. We aim to reply within 30 days.</p>
+
+<h2 id="changes">Changes to this policy</h2>
+<p>If this policy changes, we will publish the new version on this page and update the “Last updated” date. Every past version is preserved in the <a href="https://github.com/{{ site.github_user }}/{{ site.github_user }}.github.io/commits/main" rel="noopener">public revision history</a>.</p>
+
+<h2 id="contact">Contact and grievances</h2>
+<p>Questions, requests and grievances about privacy: <a href="mailto:{{ site.contact_email }}?subject={{ mail_subject | uri_escape }}">{{ site.contact_email }}</a>{% if p %}. You can also visit <a href="{{ '/legal/' | append: p.slug | append: '/support/' | relative_url }}">{{ p.name }} Support</a>{% endif %}.</p>
+
+</div>

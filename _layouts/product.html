@@ -1,0 +1,56 @@
+---
+layout: doc
+---
+{%- assign p = page.product -%}
+{%- assign base = '/legal/' | append: p.slug | append: '/' -%}
+
+<p class="lede">{{ p.summary }}</p>
+
+<div class="cards cards--3">
+  <a class="card card--link" href="{{ base | append: 'privacy/' | relative_url }}">
+    <span class="card__eyebrow">Privacy Policy</span>
+    <strong class="card__title">What {{ p.name }} handles</strong>
+    <span class="card__text">The data it accesses, its permissions and network use, and how to delete everything.</span>
+  </a>
+  <a class="card card--link" href="{{ base | append: 'terms/' | relative_url }}">
+    <span class="card__eyebrow">Terms of Use</span>
+    <strong class="card__title">The rules of use</strong>
+    <span class="card__text">Licence, responsibilities, warranty and the terms specific to {{ p.name }}.</span>
+  </a>
+  <a class="card card--link" href="{{ base | append: 'support/' | relative_url }}">
+    <span class="card__eyebrow">Support</span>
+    <strong class="card__title">Get help</strong>
+    <span class="card__text">Contact, bug reports, security and common questions.</span>
+  </a>
+</div>
+
+{%- if p.privacy.highlights.size > 0 %}
+<aside class="glance" aria-label="Privacy summary">
+  <h2 class="glance__title">Privacy at a glance</h2>
+  <ul class="glance__list">
+    {%- for h in p.privacy.highlights %}
+    <li>{{ h | markdownify | remove: "<p>" | remove: "</p>" | strip }}</li>
+    {%- endfor %}
+  </ul>
+  {%- if p.privacy.no.size > 0 %}
+  <p class="no-chips">{% for n in p.privacy.no %}<span>No {{ n }}</span>{% endfor %}</p>
+  {%- endif %}
+</aside>
+{%- endif %}
+
+<div class="prose">
+<h2 id="facts">Product facts</h2>
+<dl class="facts">
+  {%- if p.full_name %}<dt>Full name</dt><dd>{{ p.full_name }}</dd>{% endif %}
+  <dt>Type</dt><dd>{{ p.kind }}</dd>
+  <dt>Platform</dt><dd>{{ p.platform }}</dd>
+  {%- if p.design %}<dt>Design</dt><dd>{{ p.design }}</dd>{% endif %}
+  {%- if p.version %}<dt>Version</dt><dd>{{ p.version }}</dd>{% endif %}
+  <dt>Developed by</dt><dd>{% include entity-names.html keys=p.developers %}</dd>
+  <dt>Published by</dt><dd>{% include entity-names.html keys=p.publishers %}</dd>
+  <dt>Licence</dt><dd>{{ p.license | default: "All rights reserved" }}</dd>
+  <dt>Source</dt><dd><a href="https://github.com/{{ p.repo }}" rel="noopener">github.com/{{ p.repo }}</a></dd>
+  {%- if p.homepage %}<dt>Website</dt><dd><a href="{{ p.homepage }}">{{ p.homepage | remove: "https://" }}</a></dd>{% endif %}
+  {%- if p.stores.size > 0 %}<dt>Get it</dt><dd>{% for s in p.stores %}<a href="{{ s.url }}" rel="noopener">{{ s.name }}</a>{% unless forloop.last %} · {% endunless %}{% endfor %}</dd>{% endif %}
+</dl>
+</div>

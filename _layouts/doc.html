@@ -1,0 +1,39 @@
+---
+layout: default
+---
+{%- assign p = page.product -%}
+{%- assign updated = page.updated -%}
+{%- if updated == nil and page.doc == "privacy" or updated == nil and page.doc == "terms" %}{% assign updated = site.legal_updated %}{% endif -%}
+<div class="doc-hero"{% if p %} style="--accent: {{ p.accent | default: '#d4af37' }}"{% endif %}>
+  <div class="container container--narrow">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="{{ '/legal/' | relative_url }}">Legal Centre</a>
+      {%- if p %}
+      <span aria-hidden="true">›</span>
+      <a href="{{ '/legal/' | append: p.slug | append: '/' | relative_url }}">{{ p.name }}</a>
+      {%- endif %}
+      {%- if page.doc and page.doc != "overview" %}
+      <span aria-hidden="true">›</span>
+      <span aria-current="page">{{ page.eyebrow | default: page.doc | capitalize }}</span>
+      {%- endif %}
+    </nav>
+    {% if p %}{% include product-chip.html product=p %}{% endif %}
+    <h1>{{ page.heading | default: page.title }}</h1>
+    {%- if updated %}
+    <p class="doc-hero__meta">Last updated <time datetime="{{ updated }}">{{ updated | date: "%-d %B %Y" }}</time>
+      {%- if p and p.version %} · {{ p.name }} {{ p.version }}{% endif %}</p>
+    {%- endif %}
+    {%- if p and page.doc != "overview" %}
+    <nav class="doc-tabs" aria-label="{{ p.name }} documents">
+      {%- assign base = '/legal/' | append: p.slug | append: '/' -%}
+      <a href="{{ base | append: 'privacy/' | relative_url }}"{% if page.doc == 'privacy' %} aria-current="page"{% endif %}>Privacy</a>
+      <a href="{{ base | append: 'terms/' | relative_url }}"{% if page.doc == 'terms' %} aria-current="page"{% endif %}>Terms</a>
+      <a href="{{ base | append: 'support/' | relative_url }}"{% if page.doc == 'support' %} aria-current="page"{% endif %}>Support</a>
+    </nav>
+    {%- endif %}
+  </div>
+</div>
+
+<div class="container container--narrow doc-body">
+  {{ content }}
+</div>

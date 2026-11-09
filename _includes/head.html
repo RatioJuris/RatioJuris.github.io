@@ -1,0 +1,16 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{%- assign page_title = page.title | default: site.tagline -%}
+<title>{% if page.url == "/" %}{{ site.title }} · {{ site.tagline }}{% else %}{{ page_title }} · {{ site.title }}{% endif %}</title>
+<meta name="description" content="{{ page.description | default: site.description | strip_html | normalize_whitespace | truncate: 160 }}">
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:title" content="{{ page_title }}">
+<meta property="og:description" content="{{ page.description | default: site.description | strip_html | normalize_whitespace | truncate: 200 }}">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<meta name="theme-color" content="#0b1120" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#faf7f0" media="(prefers-color-scheme: light)">
+<meta name="color-scheme" content="dark light">
+<link rel="icon" href="{{ '/assets/img/seal.svg' | relative_url }}" type="image/svg+xml">
+<link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
