@@ -402,3 +402,87 @@
         a: Not reliably, so RefIndia does not try. Use the DOI or ISBN, or paste BibTeX or RIS exported from your reference manager.
       - q: Is the ILI style official?
         a: RefIndia uses the Citation Style Language style for the Journal of the Indian Law Institute, and its own formatter for Indian cases and statutes. Always check against the rules you have been given.
+
+
+- slug: teamviewer-cleanup-tool
+  name: TeamViewer Cleanup Tool
+  kind: Windows app
+  platform: Windows 10 and 11
+  design: Plain, native Windows design that explains everything it finds
+  tagline: Make sure TeamViewer is completely gone.
+  summary: >-
+    Finds and removes everything TeamViewer leaves behind: files, settings, the
+    service, startup entries and shortcuts. For clean reinstalls, and for making
+    sure remote access is gone after a scam. Available as an installer, an MSI
+    and a portable app.
+  icon: https://raw.githubusercontent.com/RatioJuris/TeamViewer-Cleanup-Tool/master/docs/icon.png
+  accent: "#0e639c"
+  version: 2.0.0
+  homepage: https://github.com/RatioJuris/TeamViewer-Cleanup-Tool/releases/latest
+  repo: RatioJuris/TeamViewer-Cleanup-Tool
+  license: MIT
+  developers: [ratiojuris]
+  publishers: [ratiojuris]
+  updated: "2026-11-09"
+  stores: []
+
+  privacy:
+    no: [account, server, analytics, advertising, internet]
+    highlights:
+      - The tool works entirely on your computer and never connects to the internet.
+      - It only reads and removes TeamViewer's own files, settings and entries.
+      - Reports are saved only where you choose, and only when you ask.
+    data:
+      - what: Names and locations of TeamViewer files, folders, registry settings, services, startup entries and running programs
+        why: To show you what TeamViewer left behind, and to remove what you select
+        leaves: "No"
+      - what: The list of installed programs
+        why: To find TeamViewer's own uninstaller
+        leaves: "No. Only TeamViewer entries are read."
+      - what: The report you choose to save
+        why: To keep a record of what was found and removed
+        leaves: "No. Saved only to the file you pick. It includes your computer name and file paths."
+    permissions:
+      - name: Administrator rights (only when needed)
+        why: To remove items installed for all users, such as Program Files, the TeamViewer service and machine-wide settings. Scanning works without them.
+    network_note: The tool makes no network connections. Only the About box can open the project page in your browser, and only if you choose to.
+    network: []
+    storage:
+      - Nothing. The tool keeps no settings, logs or history.
+      - A report is written only when you click **Save report** or use `--log`.
+    retention: >-
+      The tool stores nothing. Removed TeamViewer items are deleted permanently and
+      cannot be restored by the tool.
+
+  terms:
+    clauses:
+      - title: Removal is permanent
+        body: >-
+          Items you remove are deleted permanently. Review the list before removing
+          anything. The tool only deletes items whose own name is "TeamViewer", but you
+          remain responsible for what you choose to remove.
+      - title: No licence or ID changes
+        body: >-
+          The tool must not be used to reset TeamViewer IDs, change licence status or
+          get round TeamViewer's licensing or commercial-use detection. Use of
+          TeamViewer itself is governed by TeamViewer's own terms.
+      - title: Independence
+        body: >-
+          TeamViewer Cleanup Tool is not affiliated with or endorsed by TeamViewer.
+          TeamViewer is a trademark of TeamViewer Germany GmbH.
+      - title: Earlier versions
+        body: Version 1.0 (2018) was released under the Apache License 2.0. Version 2.0 and later are released under the MIT licence.
+
+  support:
+    guide: https://github.com/RatioJuris/TeamViewer-Cleanup-Tool#readme
+    faq:
+      - q: Windows SmartScreen warns me about the download.
+        a: The files are not code-signed. Choose **More info › Run anyway**, or check the file against `SHA256SUMS.txt` or its build provenance attestation, as described in the README.
+      - q: Some items could not be removed.
+        a: Click **Restart as administrator**, or restart Windows to release locked files, then scan again.
+      - q: Can it reset my TeamViewer ID or fix "commercial use suspected"?
+        a: No. The tool does not change TeamViewer IDs or licence status. Contact TeamViewer about licensing.
+      - q: Someone used TeamViewer to access my computer without my consent. What should I do?
+        a: Disconnect from the internet, remove TeamViewer with this tool, change your passwords from another device and call your bank. In India, call the National Cyber Crime Helpline 1930 or report at cybercrime.gov.in.
+      - q: Can I run it from a script?
+        a: Yes. Use `--scan` or `--clean --yes`, optionally with `--uninstall` and `--log`. See the README for exit codes.
